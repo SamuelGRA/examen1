@@ -2,37 +2,34 @@ name: Auto Release
 
 on:
   push:
-    branches:
-      main
-
+    branches: [ "main" ]
 
 permissions:
   contents: write
-  issues: write
-  pull-requests: write
 
 jobs:
-
   release:
-    name: Semantic Release
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: main
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install semantic-release
+      - name: Generate tag
+        id: tag
         run: |
-          npm install -g semantic-release @semantic-release/git @semantic-release/github @semantic-release/commit-analyzer @semantic-release/release-notes-generator conventional-changelog-conventionalcommits
+          LAST=$(git tag --sort=-v:refname | head -n1 | sed 's/v//' || echo 0)
+          NEXT=$((LAST+1))
+          TAG=v$NEXT
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          git tag $TAG
+          git push origin $TAG
 
-      - name: Run Semantic Release
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          release_name: Release ${{ steps.tag.outputs.tag }}
+          body: Release creada automáticamente
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
