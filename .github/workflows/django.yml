@@ -12,9 +12,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        postgres-version: [14.9, 15.0]
+
     services:
-      postgres:
-        image: postgres:14.9
+      postgres-14:
+        image: postgres:${{matrix.postgres-version}}
         env:
           POSTGRES_USER: decide
           POSTGRES_PASSWORD: decide
@@ -42,7 +46,7 @@ jobs:
       run: |
         cd decide
         python manage.py migrate
-    - name: Run tests
+    - name: Run tests ${{matrix.postgres_version}}
       run: |
         cd decide
         coverage run --branch --source=. ./manage.py test  --keepdb 
