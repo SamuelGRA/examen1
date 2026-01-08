@@ -1,4 +1,4 @@
-# Enunciado del ejercicio práctico de EGC para el turno de las 18:30.
+# Enunciado del ejercicio práctico de EGC para el turno de las 11:40.
 ***
 * Los alumnos que hayan decidido optar por el itinerario de **instensificación colaborativa**, deben realizar únicamente los apartados de cada ejercicio marcados en este itinerario.
 * Los alumnos que hayan decidido optar por el itinerario de **balance técnico-organizativo**, deben realizar los apartados de los ejercicios marcados como relativos a los itinerarios intensificación colaborativa y balance técnico-organizativo.
@@ -15,7 +15,7 @@
 	* Cree un .zip de la carpeta local del repositorio. Asegúrese de incluir la carpeta .git.
 	* Cree una carpeta screenshots donde almacenará las capturas de pantalla que las llamará X.Y siendo X el ejercicio e Y el punto en el que esta, por ejemplo A.03
 	* Cree un fichero README.txt donde incluya la url del fork realizado y la url de la aplicación de Render si procede.
-	* Comprima todo en un zip con el nombre turno42-uvus.zip
+	* Comprima todo en un zip con el nombre turno22-uvus.zip
 
 * Posteriormente se subirán las entregas al directorio de [HDVirtual](https://hdvirtual.us.es/discovirt/index.php/s/SFCmgsSLSoY2Zjk) indicado en el hiperenlace.
 
@@ -23,7 +23,7 @@
 
 ## Ejecicio A (GIT)
 ### Intensificiación colaborativa
-1. Realice un fork de este repositorio con el nombre EGC2324-turno42-"uvus".
+1. Realice un fork de este repositorio con el nombre EGC2324-turno22-"uvus".
 2. Clone el repositorio del cual ha hecho el fork. :camera:
 3. Cree una nueva rama llamada egc_test en el repositorio. 
 4. "Salte" a la rama recien creada. :camera:
@@ -34,23 +34,22 @@
 9. Refleje los cambios del repositorio local en el repositorio remoto que creó en el primer paso. 
 
 ### Balance técnico-organizativo
-10. Cree una rama ch1 y haga en ella 3 commits con cambios en el/los fichero/s de su preferencia. :camera:
-11. Muévase a egc_test e integre únicamente los cambios relativos al segundo commit de la rama ch1, mediante cherry-pick. :camera:
+10. Cree dos ramas rq1 y rq2, haga modificaciones distintas en el fichero /decide/census/models.py en las que se de un conflicto en alguna linea. :camera:
+11. Fusione, resuelva el conflicto e integre los cambios en egc_test. :camera:
 
 ### Intensificación técnica
-12. Cree una nueva rama rbs y haga en ella 5 commits (a,b,c,d,e). :camera:
-13. Utilice rebase interactivo para combinar los commits b, c y d en uno solo, de manera que el historial final contenga 3 commits: a, bcd, e. :camera: (Incluya las capturas que sean necesarias para demostrar el proceso).
+12. Haga los cambios necesario para que la rama egc_test contenga los cambios de la rama vagrant (ver ejercicio correspondiente) mediante rebase. :camera:
 
 ## Ejercicio B (GITHUB ACTIONS)
 ### Intensificiación colaborativa
-1. Modifique el workflow django.yml para que utilice la versión de python 3.11. :camera:
-2. Prepare el workflow para que la integración con codacy constituya un nuevo job llamado cobertura. :camera:
-3. Haga commit y push de los cambios realizados. :camera:
+1. En la rama egc_test, modifique el workflow django.yml para ejecutar las pruebas sin análisis de cobertura y elimine la integración con codacy. :camera:
+2. Prepare el workflow para que se ejecute únicamente en esta rama. :camera:
+3. Haga commit y push de los cambios realizados.
 4. Verifique el correcto funcionamiento del workflow. :camera:
 
 ### Balance técnico-organizativo
-5. Configure el workflow django.yml para lanzar las pruebas con dos versiones de postgres diferentes (14.9 y 15). :camera:
-6. Haga commit y push de los cambios realizados. :camera:
+5. Configure el workflow django.yml para lanzar el job build con dos versiones de postgres diferentes: 14.9 y 15. :camera:
+6. Haga commit y push de los cambios realizados.
 7. Verifique el correcto funcionamiento del workflow. :camera:
 
 ### Intensificación técnica
@@ -64,8 +63,7 @@
 2. Haga commit de los cambios realizados. :camera:
 
 ### Balance técnico-organizativo
-3. Realice los cambios necesarios para que DECIDE no utilice el modo DEBUG de Django cuando sea desplegado con docker. :camera:
-4. Haga commit y push de los cambios realizados. :camera:
+No hay nuevos apartados.
 
 ### Intensificación técnica
 No hay nuevos apartados.
@@ -76,8 +74,11 @@ No hay nuevos apartados.
 2. Haga commit de los cambios realizados. :camera:
 
 ### Balance técnico-organizativo
-3. Realice los cambios necesarios en la configuración de Ansible de decide, para que, además del usuario decide, se cree un usuario egc. :camera:
-4. Haga commit y push de los cambios realizados. :camera:
+3. Cree una nueva rama llamada vagrant y salte a esa rama.
+4. Realice los cambios necesarios en el playbook de Ansible para que el usuario administrador de DECIDE en vagrant sea adminexamen. :camera:
+5. Haga commit y push de los cambios realizados. :camera:
+6. En la misma rama vagrant, realice los cambios necesarios para que DECIDE se despliegue con Vagrant en el sistema host utilizando 4 núcleos de CPU y 4 GB de memoria RAM. :camera:
+7. Haga commit y push de los cambios realizados. :camera:
 
 ### Intensificación técnica
 No hay nuevos apartados.
