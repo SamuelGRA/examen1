@@ -2,16 +2,16 @@
 - hosts: all
 
   tasks:
-    - include: packages.yml
+    - include_tasks: packages.yml
       tags: ["packages"]
-    - include: user.yml
-    - include: python.yml
+    - include_tasks: user.yml
+    - include_tasks: python.yml
       tags: ["app"]
-    - include: files.yml
+    - include_tasks: files.yml
       tags: ["files"]
-    - include: database.yml
+    - include_tasks: database.yml
       tags: ["database"]
-    - include: django.yml
+    - include_tasks: django.yml
       tags: ["django"]
-    - include: services.yml
+    - include_tasks: services.yml
       tags: ["services"]

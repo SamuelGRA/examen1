@@ -12,6 +12,7 @@ jobs:
       - name: Generate automatic release
         uses: actions/create-release@v1
         with:
+          tag_name: v1
           release_name: New release
           body: Release generada automaticamente
         env:
