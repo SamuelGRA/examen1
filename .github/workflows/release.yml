@@ -1,0 +1,21 @@
+name: Auto release
+
+on:
+  push:
+    branches: 
+      - main
+      - egc_test
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    jobs:
+      - name: Genrate release
+        uses: actions/create_release
+        with:
+          tag_name: v1
+          release_name: New automatic release
+          body: Release generated automatically
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
