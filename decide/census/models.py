@@ -1,5 +1,6 @@
 from django.db import models
 
+#Cambio para no crear conflicto en absoluto
 #Cambio para crear conflicto
 
 class Census(models.Model):
