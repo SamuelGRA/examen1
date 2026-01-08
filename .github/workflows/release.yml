@@ -10,7 +10,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
-    jobs:
+    steps:
       - name: Genrate release
         uses: actions/create_release
         with:
